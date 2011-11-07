@@ -39,7 +39,7 @@ module Faraday
         end
 
         client = nil
-        block = lambda { request.send env[:method].to_s.downcase.to_sym, options.merge(:redirects => 3) }
+        block = lambda { request.send env[:method].to_s.downcase.to_sym, options.merge(:redirects => 5) }
         if !EM.reactor_running?
           EM.run {
             Fiber.new do
