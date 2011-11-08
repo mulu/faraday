@@ -51,6 +51,9 @@ module Faraday
           client = block.call
         end
 
+        # return the actual response uri instead of the requested uri
+        env[:url] = client.last_effective_url
+
         save_response(env, client.response_header.status, client.response) do |response_headers|
           client.response_header.each do |name, value|
             response_headers[name.to_sym] = value
